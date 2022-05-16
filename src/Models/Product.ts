@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize/types"
-import { mysql } from "../database/mysql"
+import { postgres } from "../database/instances/postgres"
 
 interface ProductInterface extends Model {
     id: number,
@@ -8,7 +8,7 @@ interface ProductInterface extends Model {
     stock: number,
 }
 
-export const Product = mysql.define<ProductInterface>("Product", {
+export const Product = postgres.define<ProductInterface>("Product", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
