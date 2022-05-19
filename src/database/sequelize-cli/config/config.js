@@ -1,7 +1,7 @@
-import dotenv from "dotenv"
+const dotenv = require("dotenv")
 dotenv.config()
 
-export default {
+module.exports = {
   "development": {
     "username": process.env.POSTGRES_USER,
     "password": process.env.POSTGRES_PWD,

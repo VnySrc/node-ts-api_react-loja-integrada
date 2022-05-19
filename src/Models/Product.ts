@@ -1,14 +1,10 @@
-import { DataTypes, Model } from "sequelize/types"
+import { DataTypes, Model } from "sequelize"
 import { postgres } from "../database/instances/postgres"
+//types
+import { ProductInterface } from "../types/modelTypes"
 
-interface ProductInterface extends Model {
-    id: number,
-    name: string,
-    price: number,
-    stock: number,
-}
 
-export const Product = postgres.define<ProductInterface>("Product", {
+export const Product = postgres.define<ProductInterface>("products", {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -26,11 +22,11 @@ export const Product = postgres.define<ProductInterface>("Product", {
     stock: {
         type: DataTypes.INTEGER,
         allowNull: false
-    }
+    },
 },
     {
         timestamps: false,
         createdAt: false,
-    }
+    },
 
 )

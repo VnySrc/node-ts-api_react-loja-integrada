@@ -1,6 +1,5 @@
 import { Product } from "../models/Product"
 import { Request, Response } from "express"
-import { where } from "sequelize/types"
 
 export const getAllProducts = async (req: Request, res: Response) => {
     const response = await Product.findAll()
@@ -24,6 +23,19 @@ export const addProduct = async (req: Request, res: Response) => {
         res.status(400)
         res.json({status: "Parametros Incorretos"})
     }
+}
+
+export const findOneProductById = async (req: Request, res: Response) => {
+    const id = req.params.id
+    if (id) {
+        const response = await Product.findByPk(id)
+        res.json({response})
+    }
+    else{
+        res.status(404)
+        res.json({status: "id de produto invalido"})
+    }
+   
 }
 
 export const editProduct = async (req: Request, res: Response) => {
